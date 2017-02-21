@@ -39,6 +39,7 @@ function s:WildignoreFromGitignore(...)
     let igstring = ''
     for oline in readfile(gitignore)
       let line = substitute(oline, '\s|\n|\r', '', "g")
+      let line = substitute(line, ',', '\\\\,', "g")
       if line =~ '^#' | con | endif
       if line == ''   | con | endif
       if line =~ '^!' | con | endif
